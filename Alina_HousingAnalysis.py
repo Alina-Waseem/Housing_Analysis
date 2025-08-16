@@ -33,7 +33,7 @@ for col in cols:
   print("Maximum: ", df[col].max())
   print("-" * 40)
 
-#Part 4:  Visualization
+# Part 4: Visualization
 
 plt.figure(figsize=(8,5))
 sns.histplot(df['price'], bins=30, kde=True)
@@ -42,14 +42,34 @@ plt.xlabel('Price')
 plt.ylabel('Count')
 plt.show()
 
-plt.figure(figsize= (8,5))
-sns.boxplot(x=df['area'])
-plt.title('Box Plot of Area')
+plt.figure(figsize=(8,5))
+sns.boxplot(x=df['bedrooms'], y=df['price'])
+plt.title('Price Distribution by Bedrooms')
+plt.xlabel('Bedrooms')
+plt.ylabel('Price')
 plt.show()
 
-plt.figure(figsize = (8,5))
-sns.scatterplot(x='area', y= 'price', data= df)
+plt.figure(figsize=(8,5))
+sns.scatterplot(x='area', y='price', data=df)
 plt.title('Price vs Area')
 plt.xlabel('Area')
 plt.ylabel('Price')
 plt.show()
+
+plt.figure(figsize=(8,5))
+df['furnishingstatus'].value_counts().plot(kind='bar')
+plt.title('Furnishing Status Count')
+plt.xlabel('Furnishing Status')
+plt.ylabel('Count')
+plt.show()
+
+plt.figure(figsize=(8,5))
+sns.boxplot(x='furnishingstatus', y='price', data=df)
+plt.title('Price Distribution by Furnishing Status')
+plt.show()
+
+plt.figure(figsize=(8,5))
+sns.violinplot(x='furnishingstatus', y='price', data=df)
+plt.title('Price Distribution by Furnishing Status (Violin)')
+plt.show()
+
